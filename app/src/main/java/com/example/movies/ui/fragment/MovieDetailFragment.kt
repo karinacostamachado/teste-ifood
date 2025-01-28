@@ -54,11 +54,21 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail_fragment) {
                 navArguments.movie.posterPath,
                 binding.movieImg
             )
-            movieOverview.text = navArguments.movie.overview
+            setOverviewVisibility(navArguments.movie.overview)
             title.text = navArguments.movie.title
             releaseDate.text = navArguments.movie.releaseDate
             voteAverage.progress = navArguments.movie.voteAverage.roundToInt()
 
+        }
+    }
+
+    private fun setOverviewVisibility(overviewText: String) {
+        if (overviewText.isBlank()) {
+            binding.movieOverviewTitle.visibility = View.GONE
+            binding.movieOverview.visibility = View.GONE
+        } else {
+            binding.movieOverview.text = overviewText
+            binding.movieOverview.visibility = View.VISIBLE
         }
     }
 
@@ -120,8 +130,8 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail_fragment) {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }
