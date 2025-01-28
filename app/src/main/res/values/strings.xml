@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="generic_error_description">Algo deu errado. Tente novamente mais tarde.</string>
+    <string name="app_bar_content_description">Voltar</string>
+    <string name="error_vector_content_description">Erro</string>
+    <string name="movie_content_description">Imagem do filme</string>
+    <string name="movie_title">Título</string>
+    <string name="release_date">Data de lançamento</string>
+    <string name="overview">Sinopse</string>
+    <string name="similar_movies_title">Filmes semelhantes</string>
+    <string name="search_movie">Pesquisar filme</string>
+    <string name="search_vector">Lupa de busca</string>
+    <string name="movies_category">Filmes</string>
+    <string name="upcoming_movies_category">Lançamentos</string>
+    <string name="top_rated_movies_category">Mais votados</string>
+</resources>

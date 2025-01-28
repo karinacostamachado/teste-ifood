@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movies_nav_graph"
+    app:startDestination="@id/moviesListFragment">
+
+    <fragment
+        android:id="@+id/moviesListFragment"
+        android:name="com.example.movies.ui.fragment.MoviesListFragment"
+        android:label="MoviesListFragment"
+        tools:layout="@layout/movies_list_fragment">
+
+        <action
+            android:id="@+id/goToMovieDetail"
+            app:destination="@id/movieDetailFragment"
+            app:popUpToInclusive="@id/movies_nav_graph">
+            <argument
+                android:name="movie"
+                app:argType="com.example.movies.ui.vo.MovieVO"
+                app:nullable="false" />
+        </action>
+
+        <action
+            android:id="@+id/goToSearchMoviesFragment"
+            app:destination="@id/searchMoviesFragment" />
+
+        <action
+            android:id="@+id/goToGenericErrorFragment"
+            app:destination="@id/genericErrorFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.movies.ui.fragment.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        tools:layout="@layout/movie_detail_fragment">
+
+        <argument
+            android:name="movie"
+            app:argType="com.example.movies.ui.vo.MovieVO"
+            app:nullable="false" />
+
+        <action
+            android:id="@+id/goToMovieDetail"
+            app:destination="@id/movieDetailFragment">
+            <argument
+                android:name="movie"
+                app:argType="com.example.movies.ui.vo.MovieVO"
+                app:nullable="false" />
+        </action>
+
+        <action
+            android:id="@+id/goToGenericErrorFragment"
+            app:destination="@id/genericErrorFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchMoviesFragment"
+        android:name="com.example.movies.ui.fragment.SearchMoviesFragment"
+        android:label="SearchMoviesFragment"
+        tools:layout="@layout/search_movies_fragment">
+
+        <action
+            android:id="@+id/goToMovieDetail"
+            app:destination="@+id/movieDetailFragment" />
+
+        <action
+            android:id="@+id/goToGenericErrorFragment"
+            app:destination="@id/genericErrorFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/genericErrorFragment"
+        android:name="com.example.movies.ui.fragment.GenericErrorFragment"
+        android:label="GenericErrorFragment"
+        tools:layout="@layout/generic_error_fragment" />
+
+</navigation>
