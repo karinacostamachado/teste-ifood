@@ -64,15 +64,13 @@ dependencies {
     implementation(libs.ui.navigation)
     implementation(libs.glide)
     implementation(libs.shimmer)
+    implementation(libs.splash.screen)
 
     // Tests
     testImplementation(libs.junit)
     testImplementation(libs.coroutines)
     testImplementation(libs.mockk)
     testImplementation(libs.arch)
-    testImplementation(libs.androidx.espresso.core)
-    testImplementation(libs.espresso.intent)
-    // UI Tests
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.espresso.intent)

@@ -48,7 +48,6 @@ open class BaseTest {
             posterPath = getPosterPath("/poster.jpg"),
             releaseDate = getReleaseDate("2023-10-27"),
             voteAverage = 8.5,
-            category = ""
         )
     )
 }

@@ -35,33 +35,35 @@ class SearchMoviesFragment : Fragment(R.layout.search_movies_fragment) {
         savedInstanceState: Bundle?
     ): View {
         _binding = SearchMoviesFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupSearchViewListener()
         onBackButtonPressed()
+        showEmptyListLayout()
     }
 
     private fun onBackButtonPressed() {
         binding.appBar.backButton.setOnClickListener {
-            navigation
-                .popStackBack()
+            navigation.popStackBack()
         }
     }
 
     private fun setupSearchViewListener() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Do nothing
+                // Do nothing on submit
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let {
-                    observeMoviesResult(it)
+                if (newText.isNullOrBlank()) {
+                    hideRecyclerView()
+                    showEmptyListLayout()
+                } else {
+                    observeMoviesResult(newText)
                 }
                 return true
             }
@@ -72,20 +74,38 @@ class SearchMoviesFragment : Fragment(R.layout.search_movies_fragment) {
         viewModel.searchMoviesByTitle(movieTitle)
         viewModel.moviesResult.observeViewStates(viewLifecycleOwner,
             onLoading = { showLoading() },
-            onSuccess = { setupRecyclerView(it) },
-            onEmpty = { hideLoading() },
-            onError = { showError() })
+            onSuccess = { movies ->
+                hideLoading()
+                hideEmptyListLayout()
+                setupRecyclerView(movies)
+            },
+            onEmpty = {
+                hideLoading()
+                showEmptyListLayout()
+                hideRecyclerView()
+            },
+            onError = {
+                hideLoading()
+                showError()
+                hideRecyclerView()
+            })
     }
 
     private fun showError() {
-        hideLoading()
-        navigation
-            .SearchMoviesFragmentNavigation()
-            .goToGenericError()
+        navigation.SearchMoviesFragmentNavigation().goToGenericError()
     }
 
     private fun showLoading() {
         binding.shimmer.startShimmer()
+        binding.shimmer.visibility = View.VISIBLE
+    }
+
+    private fun showEmptyListLayout() {
+        binding.emptyMovieListContainer.visibility = View.VISIBLE
+    }
+
+    private fun hideEmptyListLayout() {
+        binding.emptyMovieListContainer.visibility = View.GONE
     }
 
     private fun hideLoading() {
@@ -97,17 +117,18 @@ class SearchMoviesFragment : Fragment(R.layout.search_movies_fragment) {
         with(binding.searchResultsRecyclerView) {
             movies?.let {
                 adapter = MoviesAdapter(movies) { movie ->
-                    navigation
-                        .SearchMoviesFragmentNavigation()
-                        .goToMovieDetail(movie)
+                    navigation.SearchMoviesFragmentNavigation().goToMovieDetail(movie)
                 }
                 layoutManager =
                     GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)
                 visibility = View.VISIBLE
-                hideLoading()
             }
         }
+    }
+
+    private fun hideRecyclerView() {
+        binding.searchResultsRecyclerView.visibility = View.GONE
     }
 
     override fun onDestroyView() {

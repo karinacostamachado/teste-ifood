@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_top_constraint">30dp</dimen>
+    <dimen name="search_icon_margin_end">20dp</dimen>
+    <dimen name="margin_default">20dp</dimen>
+    <dimen name="error_image_size">110dp</dimen>
+    <dimen name="margin_top_error_description">10dp</dimen>
+    <dimen name="movie_card_width">150dp</dimen>
+    <dimen name="movie_card_margin_start">30dp</dimen>
+    <dimen name="movie_card_margin_top">20dp</dimen>
+    <dimen name="movie_card_corner_radius">20dp</dimen>
+    <dimen name="movie_card_elevation">10dp</dimen>
+    <dimen name="movie_title_margin_top">20dp</dimen>
+    <dimen name="movie_title_margin_horizontal">20dp</dimen>
+    <dimen name="release_date_margin_top">10dp</dimen>
+    <dimen name="release_date_margin_start">20dp</dimen>
+    <dimen name="vote_average_margin_end">30dp</dimen>
+    <dimen name="overview_title_margin">30dp</dimen>
+    <dimen name="overview_margin_horizontal">30dp</dimen>
+    <dimen name="overview_margin_top">10dp</dimen>
+    <dimen name="similar_movies_title_margin_start">30dp</dimen>
+    <dimen name="similar_movies_title_margin_top">30dp</dimen>
+    <dimen name="similar_movies_rv_margin_start">20dp</dimen>
+    <dimen name="similar_movies_rv_margin_top">20dp</dimen>
+    <dimen name="search_view_container_margin">10dp</dimen>
+    <dimen name="search_results_rv_margin_top">8dp</dimen>
+    <dimen name="movie_category_card_height">60dp</dimen>
+    <dimen name="movie_category_card_corner_radius">10dp</dimen>
+    <dimen name="movie_category_card_elevation">4dp</dimen>
+    <dimen name="movie_item_card_height">200dp</dimen>
+    <dimen name="movie_item_card_corner_radius">8dp</dimen>
+    <dimen name="movie_item_card_elevation">5dp</dimen>
+    <dimen name="movie_image_height">250dp</dimen>
+    <dimen name="movie_title_tv_margin_top">5dp</dimen>
+</resources>

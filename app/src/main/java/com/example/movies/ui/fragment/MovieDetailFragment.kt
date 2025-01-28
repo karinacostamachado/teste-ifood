@@ -16,6 +16,7 @@ import com.example.movies.di.providesNavController
 import com.example.movies.ui.adapter.MoviesAdapter
 import com.example.movies.ui.viewmodel.MovieDetailViewModel
 import com.example.movies.ui.vo.MovieVO
+import kotlin.math.roundToInt
 
 class MovieDetailFragment : Fragment(R.layout.movie_detail_fragment) {
 
@@ -56,7 +57,7 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail_fragment) {
             movieOverview.text = navArguments.movie.overview
             title.text = navArguments.movie.title
             releaseDate.text = navArguments.movie.releaseDate
-            voteAverage.progress = navArguments.movie.voteAverage.toInt()
+            voteAverage.progress = navArguments.movie.voteAverage.roundToInt()
 
         }
     }

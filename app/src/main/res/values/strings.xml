@@ -13,4 +13,5 @@
     <string name="movies_category">Filmes</string>
     <string name="upcoming_movies_category">Lançamentos</string>
     <string name="top_rated_movies_category">Mais votados</string>
+    <string name="search_a_movie_text">Procure por um filme!</string>
 </resources>

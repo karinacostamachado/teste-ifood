@@ -43,7 +43,6 @@ class SearchMoviesViewModel(
         }
     }
 
-
     companion object {
         val instance = viewModelFactory {
             initializer {
